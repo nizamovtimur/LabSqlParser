@@ -1,0 +1,10 @@
+# Вариант 60
+# SELECT ( SELECT 1 - 2 + 3 <= 4 FROM a ) < 5 OR 6
+
+*Select: 'SELECT' Expression ('FROM' TableName)?
+TableName: Identifier
+Expression: ConditionalOR
+ConditionalOR: ConditionalOR 'OR' Comparison | Comparison
+Comparison: Comparison ('<=' | '<') Additive | Additive
+Additive: Additive ('+' | '-') Primary | Primary
+Primary: Number | Identifier | '(' Expression ')' | '(' Select ')'
