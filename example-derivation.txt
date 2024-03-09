@@ -1,0 +1,15 @@
+Values
+'VALUES' '(' Expression ')' 'ORDER' 'BY' SortExpression 'LIMIT' 'ALL'
+'VALUES' '(' ConditionalAnd ')' 'ORDER' 'BY' SortExpression 'LIMIT' 'ALL'
+'VALUES' '(' ConditionalAnd 'AND' Primary ')' 'ORDER' 'BY' SortExpression 'LIMIT' 'ALL'
+'VALUES' '(' Primary 'AND' Primary ')' 'ORDER' 'BY' SortExpression 'LIMIT' 'ALL'
+'VALUES' '(' '(' Expression ')' 'AND' Primary ')' 'ORDER' 'BY' SortExpression 'LIMIT' 'ALL'
+'VALUES' '(' '(' ConditionalAnd ')' 'AND' Primary ')' 'ORDER' 'BY' SortExpression 'LIMIT' 'ALL'
+'VALUES' '(' '(' Primary ')' 'AND' Primary ')' 'ORDER' 'BY' SortExpression 'LIMIT' 'ALL'
+'VALUES' '(' '(' Number ')' 'AND' Primary ')' 'ORDER' 'BY' SortExpression 'LIMIT' 'ALL'
+'VALUES' '(' '(' Number ')' 'AND' Identifier ')' 'ORDER' 'BY' SortExpression 'LIMIT' 'ALL'
+'VALUES' '(' '(' Number ')' 'AND' Identifier ')' 'ORDER' 'BY' Expression 'ASC' 'LIMIT' 'ALL'
+'VALUES' '(' '(' Number ')' 'AND' Identifier ')' 'ORDER' 'BY' ConditionalAnd 'ASC' 'LIMIT' 'ALL'
+'VALUES' '(' '(' Number ')' 'AND' Identifier ')' 'ORDER' 'BY' Primary 'ASC' 'LIMIT' 'ALL'
+'VALUES' '(' '(' Number ')' 'AND' Identifier ')' 'ORDER' 'BY' Number 'ASC' 'LIMIT' 'ALL'
+# VALUES ( ( 1 ) AND a ) ORDER BY 2 ASC LIMIT ALL

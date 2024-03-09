@@ -1,0 +1,10 @@
+# Вариант 10
+# VALUES ( ( 1 ) AND a ) ORDER BY 2 ASC LIMIT ALL
+# VALUES ( 1 ) ORDER BY 2 DESC
+# VALUES ( 1 ) ORDER BY 2
+# VALUES ( 1 )
+*Values: 'VALUES' '(' Expression ')' ('ORDER' 'BY' SortExpression)? ('LIMIT' 'ALL')?
+SortExpression: Expression ('ASC' | 'DESC')?
+Expression: ConditionalAnd
+ConditionalAnd: ConditionalAnd 'AND' Primary | Primary
+Primary: Number | Identifier | '(' Expression ')'

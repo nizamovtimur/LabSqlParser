@@ -1,0 +1,16 @@
+Values: 'VALUES' '(' Expression ')' 'ORDER' 'BY' SortExpression 'LIMIT' 'ALL'
+Values: 'VALUES' '(' Expression ')' 'ORDER' 'BY' SortExpression
+Values: 'VALUES' '(' Expression ')' 'LIMIT' 'ALL'
+Values: 'VALUES' '(' Expression ')'
+SortExpression: Expression 'ASC'
+SortExpression: Expression 'DESC'
+SortExpression: Expression
+Expression: ConditionalAnd
+ConditionalAnd: ConditionalAnd 'AND' Primary
+ConditionalAnd: Primary
+Primary: Number
+Primary: Identifier
+Primary: '(' Expression ')'
+# Стартовый нетерминал: Values
+# Нетерминалы: Values, Expression, SortExpression, ConditionalAnd, Primary
+# Терминалы: 'VALUES', '(', ')', 'ORDER', 'BY', 'LIMIT', 'ALL', 'ASC', 'DESC', 'AND', Number, Identifier
