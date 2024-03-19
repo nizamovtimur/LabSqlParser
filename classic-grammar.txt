@@ -1,19 +1,16 @@
-Select: 'SELECT' Expression 'FROM' TableName
-Select: 'SELECT' Expression
-TableName: Identifier
-Expression: ConditionalOR
-ConditionalOR: ConditionalOR 'OR' Comparison
-ConditionalOR: Comparison
-Comparison: Comparison '<' Additive
-Comparison: Comparison '<=' Additive
-Comparison: Additive
-Additive: Additive '-' Primary
-Additive: Additive '+' Primary
-Additive: Primary
+Values: 'VALUES' Expression 'ORDER BY' SortExpression 'LIMIT ALL'
+Values: 'VALUES' Expression 'ORDER BY' SortExpression
+Values: 'VALUES' Expression 'LIMIT ALL'
+Values: 'VALUES' Expression
+Expression: ConditionalAnd
+ConditionalAnd: ConditionalAnd 'AND' Primary
+ConditionalAnd: Primary
+SortExpression: Primary 'ASC'
+SortExpression: Primary 'DESC'
+SortExpression: Primary
 Primary: Number
 Primary: Identifier
 Primary: '(' Expression ')'
-Primary: '(' Select ')'
-# Стартовый нетерминал: Select
-# Нетерминалы: Select, Expression, TableName, ConditionalOR, Comparison, Additive, Primary
-# Терминалы: 'SELECT', 'FROM', Identifier, 'OR', ...
+# Стартовый нетерминал: Values
+# Нетерминалы: Values, Expression, SortExpression, ConditionalAnd, Primary
+# Терминалы: 'VALUES', 'ORDER BY', 'LIMIT ALL', 'AND', 'ASC', 'DESC', Number, Identifier, '(', ')'

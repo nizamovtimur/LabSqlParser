@@ -1,10 +1,11 @@
-# Вариант 60
-# SELECT ( SELECT 1 - 2 + 3 <= 4 FROM a ) < 5 OR 6
+# Вариант 10
+# VALUES ( ( 1 ) AND a ) ORDER BY 2 ASC LIMIT ALL
+# VALUES ( 1 ) ORDER BY 2 DESC
+# VALUES ( 1 ) ORDER BY 2
+# VALUES ( 1 )
 
-*Select: 'SELECT' Expression ('FROM' TableName)?
-TableName: Identifier
-Expression: ConditionalOR
-ConditionalOR: ConditionalOR 'OR' Comparison | Comparison
-Comparison: Comparison ('<=' | '<') Additive | Additive
-Additive: Additive ('+' | '-') Primary | Primary
-Primary: Number | Identifier | '(' Expression ')' | '(' Select ')'
+*Values: 'VALUES' Expression ('ORDER BY' SortExpression)? ('LIMIT ALL')?
+Expression: ConditionalAnd
+ConditionalAnd: ConditionalAnd 'AND' Primary | Primary
+SortExpression: Primary ('ASC' | 'DESC')?
+Primary: Number | Identifier | '(' Expression ')'

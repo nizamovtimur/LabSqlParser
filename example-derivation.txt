@@ -1,29 +1,16 @@
-Select
-'SELECT' Expression
-'SELECT' ConditionalOR
-'SELECT' ConditionalOR 'OR' Comparison
-'SELECT' Comparison 'OR' Comparison
-'SELECT' Comparison '<' Additive 'OR' Comparison
-'SELECT' Additive '<' Additive 'OR' Comparison
-'SELECT' Primary '<' Additive 'OR' Comparison
-'SELECT' '(' Select ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Expression 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' ConditionalOR 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Comparison 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Additive '<=' Additive 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Additive '+' Primary '<=' Additive 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Additive '-' Primary '+' Primary '<=' Additive 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Primary '-' Primary '+' Primary '<=' Additive 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Number '-' Primary '+' Primary '<=' Additive 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Number '-' Number '+' Primary '<=' Additive 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Number '-' Number '+' Number '<=' Additive 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Number '-' Number '+' Number '<=' Primary 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Number '-' Number '+' Number '<=' Number 'FROM' TableName ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Number '-' Number '+' Number '<=' Number 'FROM' Identifier ')' '<' Additive 'OR' Comparison
-'SELECT' '(' 'SELECT' Number '-' Number '+' Number '<=' Number 'FROM' Identifier ')' '<' Primary 'OR' Comparison
-'SELECT' '(' 'SELECT' Number '-' Number '+' Number '<=' Number 'FROM' Identifier ')' '<' Number 'OR' Comparison
-'SELECT' '(' 'SELECT' Number '-' Number '+' Number '<=' Number 'FROM' Identifier ')' '<' Number 'OR' Additive
-'SELECT' '(' 'SELECT' Number '-' Number '+' Number '<=' Number 'FROM' Identifier ')' '<' Number 'OR' Primary
-'SELECT' '(' 'SELECT' Number '-' Number '+' Number '<=' Number 'FROM' Identifier ')' '<' Number 'OR' Number
-
-# SELECT ( SELECT 1 - 2 + 3 <= 4 FROM a ) < 5 OR 6
+Values
+'VALUES' Expression 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' ConditionalAnd 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' Primary 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' '(' Expression ')' 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' '(' ConditionalAnd ')' 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' '(' ConditionalAnd 'AND' Primary ')' 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' '(' Primary 'AND' Primary ')' 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' '(' '(' Expression ')' 'AND' Primary ')' 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' '(' '(' ConditionalAnd ')' 'AND' Primary ')' 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' '(' '(' Primary ')' 'AND' Primary ')' 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' '(' '(' Number ')' 'AND' Primary ')' 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' '(' '(' Number ')' 'AND' Identifier ')' 'ORDER BY' SortExpression 'LIMIT ALL'
+'VALUES' '(' '(' Number ')' 'AND' Identifier ')' 'ORDER BY' Primary 'ASC' 'LIMIT ALL'
+'VALUES' '(' '(' Number ')' 'AND' Identifier ')' 'ORDER BY' Number 'ASC' 'LIMIT ALL'
+# VALUES ( ( 1 ) AND a ) ORDER BY 2 ASC LIMIT ALL
