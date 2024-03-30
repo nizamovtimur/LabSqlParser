@@ -13,4 +13,4 @@ Primary: Identifier
 Primary: '(' Expression ')'
 # Стартовый нетерминал: Values
 # Нетерминалы: Values, Expression, SortExpression, ConditionalAnd, Primary
-# Терминалы: 'VALUES', 'ORDER', 'BY', 'LIMIT', 'ALL', 'AND', 'ASC', 'DESC', Number, Identifier, '(', ')'
+# Терминалы: 'VALUES', '(', ')', 'ORDER', 'BY', 'LIMIT', 'ALL', 'ASC', 'DESC', 'AND', Number, Identifier
