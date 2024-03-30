@@ -3,7 +3,6 @@
 # VALUES ( 1 ) ORDER BY 2 DESC
 # VALUES ( 1 ) ORDER BY 2
 # VALUES ( 1 )
-
 *Values: 'VALUES' Expression ('ORDER BY' SortExpression)? ('LIMIT ALL')?
 Expression: ConditionalAnd
 ConditionalAnd: ConditionalAnd 'AND' Primary | Primary
