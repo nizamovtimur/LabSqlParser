@@ -1,10 +1,10 @@
 interface INode { }
 interface IExpression : INode { }
-interface ISortExpression : INode { }
-record Values(IExpression Expression, ISortExpression SortExpression, string Limit) : INode { }
+record Values(IExpression Expression, SortExpression? SortExpression, bool LimitAll) : INode { }
 record Number(string Lexeme) : IExpression { }
-record Identifier(string Lexeme) : IExpression { }
+record Identifier(string Name) : IExpression { }
 record Parentheses(IExpression Child) : IExpression { }
-record ConditionalAnd(IExpression Left, IExpression Right) : IExpression { }
-enum SortOperator { ASC, DESC, }
-record Order(IExpression Expression, SortOperator Operator) : ISortExpression { }
+record Binary(IExpression Left, BinaryOperator Op, IExpression Right) : IExpression { }
+enum BinaryOperator { And, }
+enum SortDirection { Asc, Desc, }
+record SortExpression(IExpression Expression, SortDirection? Direction) : INode { }
