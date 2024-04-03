@@ -1,4 +1,4 @@
-namespace LabSqlParser;
+namespace LabSqlParser.Nodes;
 enum BinaryOperator {
 	And,
 }

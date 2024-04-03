@@ -1,3 +1,4 @@
+using LabSqlParser.Nodes;
 using System;
 namespace LabSqlParser;
 static class Program {
@@ -18,6 +19,6 @@ static class Program {
 			LimitAll: true
 		);
 		Console.WriteLine(source);
-		Console.WriteLine(tree.ToString());
+		Console.WriteLine(tree.ToFormattedString());
 	}
 }

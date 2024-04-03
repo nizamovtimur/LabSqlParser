@@ -1,3 +1,3 @@
-namespace LabSqlParser;
+namespace LabSqlParser.Nodes;
 interface IExpression : INode {
 }
