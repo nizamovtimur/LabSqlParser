@@ -20,7 +20,7 @@ static class Lexer {
 		var expectedPos = 0;
 		foreach (var token in GetMatches(lexemeRx, input)) {
 			if (expectedPos != token.Index) {
-				throw new InvalidOperationException($"Unexpected literal at position {expectedPos}");
+				throw new InvalidOperationException($"Unexpected symbol at position {expectedPos}");
 			}
 			else if (token.Groups["spaces"].Success) {
 				yield return new Token(TokenType.Spaces, token.Value);
@@ -37,7 +37,7 @@ static class Lexer {
 			expectedPos += token.Length;
 		}
 		if (expectedPos != input.Length) {
-			throw new InvalidOperationException($"Unexpected literal at position {expectedPos}");
+			throw new InvalidOperationException($"Unexpected symbol at position {expectedPos}");
 		}
 	}
 }
