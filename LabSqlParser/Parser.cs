@@ -97,11 +97,11 @@ sealed class Parser {
 		if (CurrentToken.Type == TokenType.Identifier) {
 			return ParseIdentifier();
 		}
-		throw MakeError("Expected Number, Identifier or expression in parentheses");
+		throw MakeError("Expected Number, Identifier or Expression in Parentheses");
 	}
 	Number ParseNumber() {
 		if (CurrentToken.Type != TokenType.Number) {
-			throw MakeError($"Expected Number, but {CurrentToken.Type} encountered: `{CurrentToken.Lexeme}`");
+			throw MakeError($"Expected Number, but encountered {CurrentToken}");
 		}
 		var number = new Number(CurrentToken.Lexeme);
 		ReadNextToken();
@@ -109,7 +109,7 @@ sealed class Parser {
 	}
 	Identifier ParseIdentifier() {
 		if (CurrentToken.Type != TokenType.Identifier) {
-			throw MakeError($"Expected Identifier, but {CurrentToken.Type} encountered: `{CurrentToken.Lexeme}`");
+			throw MakeError($"Expected Identifier, but encountered {CurrentToken}");
 		}
 		var identifier = new Identifier(CurrentToken.Lexeme);
 		ReadNextToken();
