@@ -3,6 +3,9 @@ sealed record SortExpression(
 	IExpression Expression,
 	SortDirection? Direction
 ) : INode {
+	public void AcceptVisitor(INodeVisitor visitor) {
+		visitor.VisitSortExpression(this);
+	}
 	public string ToFormattedString() {
 		return Direction switch {
 			SortDirection.Asc => $"{Expression.ToFormattedString()} ASC",
