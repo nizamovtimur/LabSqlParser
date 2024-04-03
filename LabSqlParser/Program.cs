@@ -3,7 +3,14 @@ using System;
 namespace LabSqlParser;
 static class Program {
 	static void Main() {
-		var source = "VALUES ( ( 1 ) AND a ) ORDER BY 2 ASC LIMIT ALL";
+		string[] sources = [
+			"VALUES ( ( 1 ) AND a ) ORDER BY 2 ASC LIMIT ALL",
+			"VALUES ( 1 ) ORDER BY 2 DESC",
+			"VALUES ( 1 ) ORDER BY 2",
+			"VALUES ( 1 )",
+			"values ( ( 1 ) and ( 2 ) ) limit    all",
+		];
+		Console.WriteLine(sources[0]);
 		var tree = new Values(
 			new Binary(
 				new Parentheses(
@@ -18,7 +25,12 @@ static class Program {
 			),
 			LimitAll: true
 		);
-		Console.WriteLine(source);
 		Console.WriteLine(tree.ToFormattedString());
+		foreach (var source in sources) {
+			Console.WriteLine("");
+			Console.WriteLine(source);
+			var tokens = Lexer.GetTokens(source);
+			if (!true) { Console.WriteLine(string.Join("\n", tokens)); }
+		}
 	}
 }
