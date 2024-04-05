@@ -80,7 +80,7 @@ sealed class Parser {
 	IExpression ParseConditionalAnd() {
 		var left = ParsePrimary();
 		if (SkipIf("AND")) {
-			var right = ParsePrimary();
+			var right = ParseConditionalAnd();
 			left = new Binary(left, BinaryOperator.And, right);
 		}
 		return left;

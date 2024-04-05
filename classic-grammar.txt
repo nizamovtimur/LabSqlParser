@@ -6,7 +6,7 @@ SortExpression: Expression 'ASC'
 SortExpression: Expression 'DESC'
 SortExpression: Expression
 Expression: ConditionalAnd
-ConditionalAnd: ConditionalAnd 'AND' Primary
+ConditionalAnd: Primary 'AND' ConditionalAnd
 ConditionalAnd: Primary
 Primary: Number
 Primary: Identifier
