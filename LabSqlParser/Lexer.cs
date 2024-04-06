@@ -35,7 +35,7 @@ static class Lexer {
 				yield return new Token(TokenType.Punctuator, token.Value);
 			}
 			else {
-				throw new InvalidOperationException($"Unexpected symbol at position {expectedPos}");
+				throw new InvalidOperationException();
 			}
 			expectedPos += token.Length;
 		}
