@@ -23,18 +23,21 @@ static class Lexer {
 				throw new InvalidOperationException($"Unexpected symbol at position {expectedPos}");
 			}
 			if (token.Groups["spaces"].Success) {
+				expectedPos += token.Length;
 				yield return new Token(TokenType.Spaces, token.Value);
 			}
 			else if (token.Groups["identifier"].Success) {
+				expectedPos += token.Length;
 				yield return new Token(TokenType.Identifier, token.Value);
 			}
 			else if (token.Groups["number"].Success) {
+				expectedPos += token.Length;
 				yield return new Token(TokenType.Number, token.Value);
 			}
-			else if (token.Groups["punc"].Success) {
+			else if (token.Groups["punctuator"].Success) {
+				expectedPos += token.Length;
 				yield return new Token(TokenType.Punctuator, token.Value);
 			}
-			expectedPos += token.Length;
 		}
 		if (expectedPos != input.Length) {
 			throw new InvalidOperationException($"Unexpected symbol at position {expectedPos}");
