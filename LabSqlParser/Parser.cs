@@ -38,9 +38,9 @@ sealed class Parser {
 	#endregion
 	public static Values Parse(IEnumerable<Token> tokens) {
 		var tokenList = tokens
-						.Where(token => token.Type != TokenType.Spaces)
-						.Append(new Token(TokenType.EndOfFile, ""))
-						.ToList();
+			.Where(token => token.Type != TokenType.Spaces)
+			.Append(new Token(TokenType.EndOfFile, ""))
+			.ToList();
 		var parser = new Parser(tokenList);
 		var values = parser.ParseValues();
 		parser.ExpectEof();
@@ -79,8 +79,8 @@ sealed class Parser {
 	}
 	IExpression ParseConditionalAnd() {
 		var left = ParsePrimary();
-		if (SkipIf("AND")) {
-			var right = ParseConditionalAnd();
+		while (SkipIf("AND")) {
+			var right = ParsePrimary();
 			left = new Binary(left, BinaryOperator.And, right);
 		}
 		return left;
