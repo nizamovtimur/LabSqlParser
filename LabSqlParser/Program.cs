@@ -30,10 +30,14 @@ static class Program {
 			Console.WriteLine();
 			Console.WriteLine(source);
 			var tokens = Lexer.GetTokens(source);
-			if (!true) { Console.WriteLine(string.Join("\n", tokens)); }
-			var parsedTree = Parser.Parse(tokens);
-			Console.WriteLine(parsedTree.ToFormattedString());
-			new DebugPrintingVisitor(Console.Out).WriteLine(parsedTree);
+			if (true) {
+				Console.WriteLine(string.Join("\n", tokens));
+			}
+			if (!true) {
+				var parsedTree = Parser.Parse(tokens);
+				Console.WriteLine(parsedTree.ToFormattedString());
+				new DebugPrintingVisitor(Console.Out).WriteLine(parsedTree);
+			}
 		}
 	}
 }
