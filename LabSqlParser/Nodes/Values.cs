@@ -8,11 +8,10 @@ sealed record Values(
 		visitor.VisitValues(this);
 	}
 	public string ToFormattedString() {
-		if (SortExpression is null) {
-			return $"VALUES ({Expression.ToFormattedString()}) {(LimitAll ? "LIMIT ALL" : "")}".Trim();
+		var sortExpression = "";
+		if (SortExpression is not null) {
+			sortExpression = $" ORDER BY {SortExpression.ToFormattedString()}";
 		}
-		else {
-			return $"VALUES ({Expression.ToFormattedString()}) ORDER BY {SortExpression.ToFormattedString()} {(LimitAll ? "LIMIT ALL" : "")}".Trim();
-		}
+		return $"VALUES ({Expression.ToFormattedString()}){sortExpression}{(LimitAll ? " LIMIT ALL" : "")}";
 	}
 }

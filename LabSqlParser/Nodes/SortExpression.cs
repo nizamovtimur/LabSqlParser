@@ -1,3 +1,4 @@
+using System;
 namespace LabSqlParser.Nodes;
 sealed record SortExpression(
 	IExpression Expression,
@@ -7,10 +8,12 @@ sealed record SortExpression(
 		visitor.VisitSortExpression(this);
 	}
 	public string ToFormattedString() {
-		return Direction switch {
-			SortDirection.Asc => $"{Expression.ToFormattedString()} ASC",
-			SortDirection.Desc => $"{Expression.ToFormattedString()} DESC",
-			_ => $"{Expression.ToFormattedString()}",
+		var direction = Direction switch {
+			null => $"",
+			SortDirection.Asc => " ASC",
+			SortDirection.Desc => " DESC",
+			_ => throw new NotSupportedException(),
 		};
+		return $"{Expression.ToFormattedString()}{direction}";
 	}
 }

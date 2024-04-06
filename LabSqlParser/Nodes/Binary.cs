@@ -1,3 +1,4 @@
+using System;
 namespace LabSqlParser.Nodes;
 sealed record Binary(
 	IExpression Left,
@@ -10,7 +11,7 @@ sealed record Binary(
 	public string ToFormattedString() {
 		return Op switch {
 			BinaryOperator.And => $"{Left.ToFormattedString()} AND {Right.ToFormattedString()}",
-			_ => "",
+			_ => throw new NotSupportedException(),
 		};
 	}
 }
