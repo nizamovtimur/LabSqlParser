@@ -36,7 +36,9 @@ static class Program {
 			if (true) {
 				var parsedTree = Parser.Parse(tokens);
 				Console.WriteLine(parsedTree.ToFormattedString());
-				if (!true) { new DebugPrintingVisitor(Console.Out).WriteLine(parsedTree); }
+				if (true) {
+					new DebugPrintingVisitor(Console.Out).WriteLine(parsedTree);
+				}
 			}
 		}
 	}

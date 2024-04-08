@@ -33,15 +33,15 @@ sealed class DebugPrintingVisitor : INodeVisitor {
 				WriteNode(values.SortExpression);
 			}
 			else {
-				Write($"{nameof(values.SortExpression)}: null");
+				Write($"{nameof(Values.SortExpression)}: null");
 			}
 			Write(",\n");
 			WriteIndent();
 			if (values.LimitAll) {
-				Write($"{nameof(values.LimitAll)}: true");
+				Write($"{nameof(Values.LimitAll)}: true");
 			}
 			else {
-				Write($"{nameof(values.LimitAll)}: false");
+				Write($"{nameof(Values.LimitAll)}: false");
 			}
 			Write("\n");
 			indent -= 1;
@@ -58,7 +58,7 @@ sealed class DebugPrintingVisitor : INodeVisitor {
 			Write(",\n");
 			WriteIndent();
 			if (sortExpression.Direction is null) {
-				Write($"{nameof(sortExpression.Direction)}: null");
+				Write($"{nameof(SortExpression.Direction)}: null");
 			}
 			else {
 				Write($"{nameof(SortDirection)}.{sortExpression.Direction}");
@@ -87,6 +87,12 @@ sealed class DebugPrintingVisitor : INodeVisitor {
 		WriteIndent();
 		Write(")");
 	}
+	void INodeVisitor.VisitNumber(Number number) {
+		Write($"new {nameof(Number)}(\"{number.Lexeme}\")");
+	}
+	void INodeVisitor.VisitIdentifier(Identifier identifier) {
+		Write($"new {nameof(Identifier)}(\"{identifier.Name}\")");
+	}
 	void INodeVisitor.VisitParentheses(Parentheses parenthesis) {
 		Write($"new {nameof(Parentheses)}(\n");
 		{
@@ -98,11 +104,5 @@ sealed class DebugPrintingVisitor : INodeVisitor {
 		}
 		WriteIndent();
 		Write(")");
-	}
-	void INodeVisitor.VisitIdentifier(Identifier identifier) {
-		Write($"new {nameof(Identifier)}(\"{identifier.Name}\")");
-	}
-	void INodeVisitor.VisitNumber(Number number) {
-		Write($"new {nameof(Number)}(\"{number.Lexeme}\")");
 	}
 }
